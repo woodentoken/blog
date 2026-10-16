@@ -1,0 +1,46 @@
+{{/* Posts grouped by month, newest first, with a client-side date/time range filter. Expects a page collection. */}}
+<form class="post-filter" role="search" aria-label="Filter posts by date">
+  <label>From <input type="datetime-local" name="from"></label>
+  <label>To <input type="datetime-local" name="to"></label>
+  <button type="reset">Clear</button>
+</form>
+<p class="post-filter-empty" hidden>No posts in that range.</p>
+{{ range .ByDate.Reverse.GroupByDate "January 2006" }}
+<section class="post-month">
+  <h2>{{ .Key }}</h2>
+  <ul class="post-list">
+    {{ range .Pages }}
+    {{/* wall-clock time as written in front matter, so filtering doesn't shift with the reader's timezone */}}
+    <li data-date="{{ .Date.Format "2006-01-02T15:04" }}">
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2" }}</time>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+<script>
+  (() => {
+    const form = document.querySelector('.post-filter');
+    const months = document.querySelectorAll('.post-month');
+    const empty = document.querySelector('.post-filter-empty');
+    const apply = () => {
+      const from = form.from.value, to = form.to.value;
+      let any = false;
+      months.forEach(month => {
+        let shown = 0;
+        month.querySelectorAll('li').forEach(li => {
+          const d = li.dataset.date;
+          const ok = (!from || d >= from) && (!to || d <= to);
+          li.hidden = !ok;
+          if (ok) shown++;
+        });
+        month.hidden = shown === 0;
+        if (shown) any = true;
+      });
+      empty.hidden = any;
+    };
+    form.addEventListener('input', apply);
+    form.addEventListener('reset', () => setTimeout(apply));
+  })();
+</script>

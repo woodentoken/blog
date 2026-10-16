@@ -1,0 +1,72 @@
+$font-body: "Rasa", Georgia, serif;
+
+:root {
+  color-scheme: dark;
+  --bg: #110f0d;
+  --surface: #1c1916;
+  --text: #e6dfd3;
+  --muted: #948c82;
+  --border: #332e29;
+  --link: #e0a96d;
+  --link-visited: #c9958a;
+}
+
+body { background: var(--bg); color: var(--text); margin: 2rem 0; padding: 0 2rem; font-family: $font-body; font-size: 1.2rem; line-height: 1.5; }
+time { color: var(--muted); }
+img, pre { max-width: 100%; overflow-x: auto; }
+.post-image { display: block; width: 100%; aspect-ratio: 12 / 5; object-fit: cover; margin-bottom: 1.5rem; }
+.post-filter {
+  display: flex; flex-wrap: wrap; align-items: end; gap: .75rem 1rem; margin-bottom: 1rem;
+  label { display: flex; flex-direction: column; font-size: .85rem; color: var(--muted); }
+  input, button { font: inherit; font-size: .9rem; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: .25rem .5rem; }
+  button { cursor: pointer; &:hover { border-color: var(--muted); } }
+}
+.post-filter-empty { color: var(--muted); }
+.post-month h2 { font-size: 1.1rem; color: var(--muted); font-weight: 600; margin: 1.75rem 0 .5rem; }
+.post-list {
+  list-style: none; padding: 0; margin: 0;
+  li { display: flex; gap: 1rem; margin-bottom: .3rem; }
+  time { flex: 0 0 3.5rem; }
+}
+.sidebar ul { list-style: none; padding: 0; }
+.post-header { margin-bottom: 1.5rem; h1 { margin-bottom: .25rem; } }
+// padding gives tall formulas room inside the scroll box, which would otherwise clip them
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: .5em 0; }
+// Rasa has a small x-height, so monospace text looks oversized next to it at the same size
+code, kbd, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .85em; }
+pre code { font-size: 1em; }
+
+a { color: var(--link); &:visited { color: var(--link-visited); } }
+:not(pre) > code, kbd { background: var(--surface); padding: .1em .3em; border-radius: 3px; }
+kbd { border: 1px solid var(--border); }
+pre { padding: .75em 1em; border-radius: 4px; }
+blockquote { margin-left: 0; padding-left: 1em; border-left: 3px solid var(--border); color: var(--muted); }
+table { border-collapse: collapse; }
+th, td { padding: .3em .75em; border-bottom: 1px solid var(--border); }
+hr { border: 0; border-top: 1px solid var(--border); }
+// the highlighter writes its own cool-toned background inline; match the warm palette instead
+.highlight pre { background-color: var(--surface) !important; }
+
+// menu sits at the left edge; content is centered in the remaining space
+.layout { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 3rem; }
+.layout > main { width: 100%; max-width: 40rem; justify-self: center; }
+.sidebar {
+  position: sticky; top: 2rem; align-self: start;
+  a, a:visited { color: var(--muted); text-decoration: none; }
+  a:hover, a[aria-current="page"] { color: var(--text); }
+  a[aria-current="page"] { border-left: 2px solid var(--link); padding-left: .6rem; margin-left: calc(-.6rem - 2px); }
+  .site-title, .site-title:visited { display: block; margin-bottom: 1.25rem; color: var(--text); font-weight: 700; font-size: 1.3rem; }
+  li { margin-bottom: .35rem; }
+}
+// on narrow screens the menu becomes a row above the content
+@media (max-width: 48rem) {
+  body { padding: 0 1rem; }
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .layout > main { justify-self: stretch; }
+  .sidebar {
+    position: static;
+    ul { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; }
+    a[aria-current="page"] { border-left: 0; padding-left: 0; margin-left: 0; border-bottom: 2px solid var(--link); }
+  }
+}
+li:has(> input[type="checkbox"]) { list-style: none; }

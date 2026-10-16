@@ -1,11 +1,39 @@
 baseURL = "https://example.org/"  # overridden at build time by the Pages workflow
 locale = "en-us"
 disableKinds = ["taxonomy", "term"]
-title = "Blog"
+title = "Kaleb Bordner"
 
 [markup.goldmark.renderer]
   unsafe = true
 
 [markup.highlight]
   noClasses = true
-  style = "monokailight"
+  style = "github-dark"
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
+
+[menus]
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 10
+  [[menus.main]]
+    name = 'Research'
+    pageRef = '/research'
+    weight = 20
+  [[menus.main]]
+    name = 'Resume'
+    pageRef = '/resume'
+    weight = 30
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/'
+    weight = 40
+  [[menus.main]]
+    name = 'Contact'
+    pageRef = '/contact'
+    weight = 50
