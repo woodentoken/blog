@@ -1,39 +1,61 @@
-baseURL = "https://example.org/"  # overridden at build time by the Pages workflow
+baseURL = "https://example.org/"    # overridden at build time by the Pages workflow
 locale = "en-us"
 disableKinds = ["taxonomy", "term"]
 title = "Kaleb Bordner"
 
+[params]
+email = "kkbordner@ucdavis.edu"
+
 [markup.goldmark.renderer]
-  unsafe = true
+unsafe = true
 
 [markup.highlight]
-  noClasses = true
-  style = "github-dark"
+noClasses = true
+style = "github-dark"
 
 [markup.goldmark.extensions.passthrough]
-  enable = true
-  [markup.goldmark.extensions.passthrough.delimiters]
-    block = [['\[', '\]'], ['$$', '$$']]
-    inline = [['\(', '\)'], ['$', '$']]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]'], ['$$', '$$']]
+inline = [['\(', '\)'], ['$', '$']]
 
 [menus]
-  [[menus.main]]
-    name = 'About'
-    pageRef = '/about'
-    weight = 10
-  [[menus.main]]
-    name = 'Research'
-    pageRef = '/research'
-    weight = 20
-  [[menus.main]]
-    name = 'Resume'
-    pageRef = '/resume'
-    weight = 30
-  [[menus.main]]
-    name = 'Posts'
-    pageRef = '/'
-    weight = 40
-  [[menus.main]]
-    name = 'Contact'
-    pageRef = '/contact'
-    weight = 50
+[[menus.main]]
+name = 'Professional'
+identifier = 'professional'
+weight = 10
+[[menus.main]]
+name = 'About'
+pageRef = '/about'
+parent = 'professional'
+weight = 5
+[[menus.main]]
+name = 'Research'
+pageRef = '/research'
+parent = 'professional'
+weight = 10
+[[menus.main]]
+name = 'Resume'
+pageRef = '/resume'
+parent = 'professional'
+weight = 20
+[[menus.main]]
+name = 'Posts'
+pageRef = '/'
+parent = 'professional'
+weight = 10
+
+[[menus.main]]
+name = 'Personal'
+identifier = 'personal'
+weight = 30
+[[menus.main]]
+name = 'Poems'
+pageRef = '/poems'
+parent = 'personal'
+weight = 20
+[[menus.main]]
+name = 'Photography'
+pageRef = '/photography'
+parent = 'personal'
+weight = 20

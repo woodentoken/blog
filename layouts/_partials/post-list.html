@@ -1,17 +1,29 @@
-{{/* Posts grouped by month, newest first, with a client-side date/time range filter. Expects a page collection. */}}
+{{/* Posts grouped by month, newest first, with a client-side month/year filter. Expects a page collection. */}}
 <form class="post-filter" role="search" aria-label="Filter posts by date">
-  <label>From <input type="datetime-local" name="from"></label>
-  <label>To <input type="datetime-local" name="to"></label>
+  <label>Month
+    <select name="month">
+      <option value="">Any</option>
+      {{ range $i, $m := slice "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec" }}
+      <option value="{{ printf "%02d" (add $i 1) }}">{{ $m }}</option>
+      {{ end }}
+    </select>
+  </label>
+  <label>Year
+    <select name="year">
+      <option value="">Any</option>
+      {{ range .ByDate.Reverse.GroupByDate "2006" }}<option>{{ .Key }}</option>{{ end }}
+    </select>
+  </label>
   <button type="reset">Clear</button>
 </form>
-<p class="post-filter-empty" hidden>No posts in that range.</p>
-{{ range .ByDate.Reverse.GroupByDate "January 2006" }}
+<p class="post-filter-empty" hidden>No posts in that month.</p>
+{{ range .ByDate.Reverse.GroupByDate "2006" }}
 <section class="post-month">
   <h2>{{ .Key }}</h2>
   <ul class="post-list">
     {{ range .Pages }}
-    {{/* wall-clock time as written in front matter, so filtering doesn't shift with the reader's timezone */}}
-    <li data-date="{{ .Date.Format "2006-01-02T15:04" }}">
+    {{/* date as written in front matter, so filtering doesn't shift with the reader's timezone */}}
+    <li data-date="{{ .Date.Format "2006-01" }}">
       <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2" }}</time>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </li>
@@ -25,17 +37,17 @@
     const months = document.querySelectorAll('.post-month');
     const empty = document.querySelector('.post-filter-empty');
     const apply = () => {
-      const from = form.from.value, to = form.to.value;
+      const month = form.month.value, year = form.year.value;
       let any = false;
-      months.forEach(month => {
+      months.forEach(section => {
         let shown = 0;
-        month.querySelectorAll('li').forEach(li => {
-          const d = li.dataset.date;
-          const ok = (!from || d >= from) && (!to || d <= to);
+        section.querySelectorAll('li').forEach(li => {
+          const [y, m] = li.dataset.date.split('-');
+          const ok = (!year || y === year) && (!month || m === month);
           li.hidden = !ok;
           if (ok) shown++;
         });
-        month.hidden = shown === 0;
+        section.hidden = shown === 0;
         if (shown) any = true;
       });
       empty.hidden = any;
