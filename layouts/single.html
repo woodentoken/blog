@@ -1,12 +1,14 @@
 {{ define "main" }}
 <article>
-  {{ $isPost := eq .Section "posts" }}
+  {{ $isPost := in (slice "posts" "poems") .Section }}
   {{ if $isPost }}
   {{ if or (not .Params.title) .Date.IsZero }}{{ errorf "post %s needs both a title and a date in its front matter" .File.Path }}{{ end }}
-  {{ $src := .Params.image | default "images/placeholder.svg" }}
-  {{ with or (.Resources.Get $src) (resources.Get $src) }}
+  {{/* posts fall back to a placeholder; poems only show an image if one is set */}}
+  {{ $src := .Params.image }}
+  {{ if and (not $src) (eq .Section "posts") }}{{ $src = "images/placeholder.svg" }}{{ end }}
+  {{ with $src }}{{ with or ($.Resources.Get .) (resources.Get .) }}
   <img class="post-image" src="{{ .RelPermalink }}" alt="{{ $.Params.imageAlt }}">
-  {{ end }}
+  {{ end }}{{ end }}
   {{ end }}
   <header class="post-header">
     <h1>{{ .Title }}</h1>

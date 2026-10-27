@@ -1,0 +1,3 @@
+{{ $current := .page.IsMenuCurrent "main" .entry }}
+{{ if and (eq .entry.PageRef "/") (eq .page.Section "posts") }}{{ $current = true }}{{ end }}
+<li><a href="{{ .entry.URL }}"{{ if $current }} aria-current="page"{{ end }}>{{ .entry.Name }}</a></li>

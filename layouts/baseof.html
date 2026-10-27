@@ -21,11 +21,19 @@
   <div class="layout">
     <nav class="sidebar" aria-label="Main">
       <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+      {{ with site.Params.email }}<a class="site-email" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
       <ul>
         {{ range site.Menus.main }}
-        {{ $current := $.IsMenuCurrent "main" . }}
-        {{ if and (eq .PageRef "/") (eq $.Section "posts") }}{{ $current = true }}{{ end }}
-        <li><a href="{{ .URL }}"{{ if $current }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{ if .HasChildren }}
+        <li class="menu-group">
+          <span class="menu-label">{{ .Name }}</span>
+          <ul>
+            {{ range .Children }}{{ partial "menu-item.html" (dict "page" $ "entry" .) }}{{ end }}
+          </ul>
+        </li>
+        {{ else }}
+        {{ partial "menu-item.html" (dict "page" $ "entry" .) }}
+        {{ end }}
         {{ end }}
       </ul>
     </nav>
