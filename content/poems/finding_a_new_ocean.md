@@ -5,10 +5,10 @@ date = 2026-10-27
 
 one morning, I will wake up tired\
 seeing warm light in the corner of my eye\
-but laughing at sad movies.
+and laughing at sad movies.
 
-wooden floorboards carry old sounds\
-leading me smoothly to the next room\
+floorboards and I carry old sounds\
+leading me to the next room\
 where rugs cover the walls, and mute all the colors.
 
 every room is a kitchen\
@@ -19,4 +19,4 @@ and looking out the window\
 I find a new ocean\
 without a name\
 reflecting the sun\
-from the minute before.
+from the moment before.

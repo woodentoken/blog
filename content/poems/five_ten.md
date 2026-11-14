@@ -15,7 +15,7 @@ or in calm words on a colorful page
 of the natural ways\
 you build passion\
 out of natural things\
-and believe that less flowers are more flowers
+and believe that less cutting leaves more flowers
 
 of how proud it makes us\
 to see you cry\
@@ -25,9 +25,9 @@ alongside them
 
 of how the things you plant\
 every Spring\
-in the moldy boxes on the back deck\
+in the crumbling barrels on the deck\
 are the most comforting things\
-i have ever seen
+i can ever see
 
 about the joy you get\
 from giving love and\

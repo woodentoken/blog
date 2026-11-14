@@ -5,7 +5,7 @@ date = 2023-05-03
 
 cool blood\
 knowing only\
-that it keeps cooling\
+that it keeps cooling
 
 planets spin until they cant\
 and everything in their orbit\

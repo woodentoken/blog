@@ -15,7 +15,7 @@ and the other tender\
 but postponing politely\
 like I had unknowingly overstayed a welcome
 
-it is unwitting
+unwitting
 
 now I am weighing the prospects of contacting you\
 whether you have moved on better than I have\
@@ -26,7 +26,7 @@ if only to say\
 I still exist
 
 it is 4 am and I am still sick\
-I am not tired anymore
+I am not tired
 
 it is 4 pm\
-I am once again tired
+I am tired

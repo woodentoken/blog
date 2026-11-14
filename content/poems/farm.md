@@ -4,18 +4,18 @@ date = 2023-05-03
 +++
 imagine
 having a memory of a farm
-that your mother was born at
-that saw the deaths of
-a couple pigs and a few cows
+that your mother was born on
+with funeral services
+for pigs and cows
 
-imagine the animal noise maker
+imagine the animal-noise maker
 you were the steward of
-it recited noise and made you imagine
-shiny ducks in a turquoise pond
+it recited electric and made you imagine
+shiny ducks in a pond sticker
 
-if the creek behind this apartment building
+if the creek behind this apartment
 gets any more trash,
-the remaining fish will leave
+the fish will just leave
 
-please imagine that
-you haven't only seen things in pictures
+please imagine\
+that you haven't only seen things in pictures

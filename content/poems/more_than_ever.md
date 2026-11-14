@@ -12,8 +12,8 @@ to therapy
 
 pushing out words from a basement freezer\
 plugged in\
-along with the spiders\
-on the very floor
+with spiders\
+on the absolute floor
 
 is it all for show\
 placing myself under labels of hurt\

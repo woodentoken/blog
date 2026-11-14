@@ -3,7 +3,8 @@ title = 'gather'
 date = 2019-12-30
 +++
 
-you have to gather hope\
+gather yourself,\
+you have to\
 and be amazed by\
 being spoken to\
 or speaking
@@ -11,9 +12,9 @@ or speaking
 and to have someone actually\
 get it
 
-taking spoken word as the truth\
+taking spoken word like truth\
 without polite compliance\
-but confusion
+but confusion of polarity
 
 as in some coincidental sense-making\
 out of all the possibility we are caged by
