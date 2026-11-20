@@ -55,8 +55,8 @@ hr { border: 0; border-top: 1px solid var(--border); }
   a, a:visited { color: var(--muted); text-decoration: none; }
   a:hover, a[aria-current="page"] { color: var(--text); }
   a[aria-current="page"] { border-left: 2px solid var(--link); padding-left: .6rem; margin-left: calc(-.6rem - 2px); }
-  .site-title, .site-title:visited { display: block; color: var(--text); font-weight: 700; font-size: 1.3rem; }
-  .site-email { display: block; margin: .15rem 0 1.25rem; font-size: .85rem; overflow-wrap: anywhere; }
+  .site-title, .site-title:visited { display: block; color: var(--text); font-weight: 700; font-size: 1.45rem; }
+  .site-email { display: block; margin: .15rem 0 1.25rem; font-size: .95rem; overflow-wrap: anywhere; }
   li { margin-bottom: .35rem; }
   .menu-group { margin: .9rem 0; }
   .menu-group ul { margin: .35rem 0 0; }
