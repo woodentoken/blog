@@ -1,6 +1,7 @@
 {{ define "main" }}
+{{ $isPost := in (slice "posts" "poems") .Section }}
+{{ if $isPost }}<div class="with-pane">{{ partial "section-pane.html" . }}{{ end }}
 <article>
-  {{ $isPost := in (slice "posts" "poems") .Section }}
   {{ if $isPost }}
   {{ if or (not .Params.title) .Date.IsZero }}{{ errorf "post %s needs both a title and a date in its front matter" .File.Path }}{{ end }}
   {{/* posts fall back to a placeholder; poems only show an image if one is set */}}
@@ -16,4 +17,5 @@
   </header>
   {{ .Content }}
 </article>
+{{ if $isPost }}</div>{{ end }}
 {{ end }}

@@ -62,6 +62,26 @@ hr { border: 0; border-top: 1px solid var(--border); }
   .menu-group ul { margin: .35rem 0 0; }
   .menu-label { text-decoration: underline; text-underline-offset: .2em; }
 }
+// posts and poems open beside their section's list, which stays in view while reading
+.layout > main:has(> .with-pane) { max-width: 56rem; }
+.with-pane { display: grid; grid-template-columns: 13rem minmax(0, 40rem); gap: 3rem; }
+.section-pane {
+  position: sticky; top: 2rem; align-self: start; max-height: calc(100vh - 4rem); overflow-y: auto;
+  padding-right: 1rem; border-right: 1px solid var(--border); font-size: 1rem;
+  a, a:visited { color: var(--muted); text-decoration: none; }
+  a:hover, a[aria-current="page"] { color: var(--text); }
+  a[aria-current="page"] { border-left: 2px solid var(--link); padding-left: .6rem; margin-left: calc(-.6rem - 2px); }
+  .section-pane-title, .section-pane-title:visited { display: block; color: var(--text); font-weight: 700; font-size: 1.15rem; }
+  h2 { font-size: 1rem; color: var(--muted); margin: 1rem 0 .3rem; }
+  ul { list-style: none; padding: 0 0 0 calc(.6rem + 2px); margin: 0; }
+  li { margin-bottom: .25rem; }
+}
+// three columns need room; below that the list pane drops away and the post fills the space
+@media (max-width: 68rem) {
+  .layout > main:has(> .with-pane) { max-width: 40rem; }
+  .with-pane { display: block; }
+  .section-pane { display: none; }
+}
 // on narrow screens the menu becomes a row above the content
 @media (max-width: 48rem) {
   body { padding: 0 1rem; }

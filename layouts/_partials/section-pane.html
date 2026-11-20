@@ -1,0 +1,16 @@
+{{/* Compact list of the current page's section, shown beside a post so the list stays in view. Expects the current page. */}}
+{{ $current := . }}
+{{ with .CurrentSection }}
+<nav class="section-pane" aria-label="{{ .Title }}">
+  {{/* posts are listed on the home page rather than at /posts/ */}}
+  <a class="section-pane-title" href="{{ if eq .Section "posts" }}{{ site.Home.RelPermalink }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .Title }}</a>
+  {{ range .Pages.ByDate.Reverse.GroupByDate "2006" }}
+  <h2>{{ .Key }}</h2>
+  <ul>
+    {{ range .Pages }}
+    <li><a href="{{ .RelPermalink }}"{{ if eq . $current }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</nav>
+{{ end }}
